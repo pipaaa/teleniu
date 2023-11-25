@@ -50,7 +50,7 @@
         
         <!-- Inserta el código del reproductor de YouTube para la lista de reproducción -->
         <iframe 
-            src="https://www.youtube.com/embed/videoseries?list=PLxu_dvaNaPua156r0sF56or6FwaHibfdx&autoplay=1&mute=1&controls=0" 
+            src="https://www.youtube.com/embed/videoseries?list=PLxu_dvaNaPua156r0sF56or6FwaHibfdx&autoplay=1&mute=1&controls=0&enablejsapi=1" 
             frameborder="0" 
             allowfullscreen
         ></iframe>
@@ -61,6 +61,26 @@
     <footer>
         <p>&copy; 2023 Tu Cadena de Televisión Online</p>
     </footer>
+
+    <script>
+        // Deshabilitar la interacción del usuario con el reproductor de YouTube
+        function onYouTubeIframeAPIReady() {
+            var player;
+            player = new YT.Player('player', {
+                events: {
+                    'onReady': onPlayerReady,
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            event.target.setPlaybackQuality('hd720'); // Puedes ajustar la calidad del video aquí
+            event.target.setLoop(true); // Repetir el video
+            event.target.playVideo();
+        }
+    </script>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
 
 </body>
 </html>
